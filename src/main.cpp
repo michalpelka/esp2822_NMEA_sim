@@ -13,7 +13,7 @@ const byte PpsPin = D1;
 
 static bool led_state = true; 
 static uint64_t count =0;
-static uint32_t elapsedSecs =0;
+static uint32_t elapsedSecs =12*3600+ 26*60 + 40;  //12:26:40 PM
 
 
 char bufferNmea[NMEA::BufferLen];

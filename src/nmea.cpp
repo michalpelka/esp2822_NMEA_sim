@@ -3,9 +3,11 @@
 
 void NMEA::produceNMEA(char *buffer, const NMEA::timestamp& ts ){
   char payload[NMEA::BufferLen];
+  // start time set to Sunday, September 13, 2020 12:26:40 PM - posix is 1600000000.
+  const char date[] = "130920"; //dd/mm/yy  
   snprintf(payload, NMEA::BufferLen,
-					"GPRMC,%02d%02d%02d,A,10.00,N,10.00,E,001.5,312.2,010100,005.3,E,A",
-					ts.hours, ts.mins, ts.secs);
+					"GPRMC,%02d%02d%02d.00,A,5109.0262308,N,11401.8407342,W,0.004,133.4,%s,0.0,E,D",
+					ts.hours, ts.mins, ts.secs, date);
     size_t len = strnlen(payload, NMEA::BufferLen);
     // compute NMEA checksum on buffer
     uint8_t NMEAChecksumComputed = 0;
